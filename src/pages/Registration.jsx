@@ -138,8 +138,8 @@ const Registration = () => {
               className={`block w-full py-2 border rounded-md focus:outline-none ${errors.password ? 'border-red-500 ring-red-500' : 'focus:ring-2 focus:ring-blue-400'}`}
               placeholder="Enter password"
             />
-            <EyeButton onClick={() => setShowPassword(v => !v)} isVisible={showPassword} className="absolute right-2 top-1/2 transform -translate-y-1/2"
- />
+            < EyeButton onClick={() => setShowPassword(v => !v)} isVisible={showPassword} className="absolute right-2 top-1/2 transform -translate-y-1/2" 
+              />
           </div>
           {errors.password && <p className="mt-1 text-sm text-red-600">{errors.password}</p>}
         </label>
