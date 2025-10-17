@@ -59,14 +59,17 @@ const Registration = () => {
     // For now just log — replace with real submit logic (API call)
     // eslint-disable-next-line no-console
     console.log('Register', form)
-    // show slide-in toast instead of alert
-    setNotification({ text: 'Registration submitted — check console', visible: true })
-    // auto-hide after 3s
+    // persist user credentials locally (simple demo — don't store plain passwords in production)
+    const user = { username: form.username, email: form.email, password: form.password }
+    localStorage.setItem('user', JSON.stringify(user))
+    // show slide-in toast
+    setNotification({ text: 'Registration successful — please login', visible: true })
     if (hideTimeout.current) clearTimeout(hideTimeout.current)
     hideTimeout.current = setTimeout(() => setNotification(prev => ({ ...prev, visible: false })), 3000)
-    // clear form on success
+    // clear form and navigate to login
     setForm({ username: '', email: '', password: '', confirm: '' })
     setErrors({})
+    navigate('/login')
   }
 
   // Notification state + timeout ref for auto-hide
